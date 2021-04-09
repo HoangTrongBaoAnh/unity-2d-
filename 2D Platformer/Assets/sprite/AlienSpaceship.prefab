@@ -372,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253822065518726994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.019974, y: 6.0137444, z: 14}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 253822064611886054}
@@ -512,9 +512,9 @@ MonoBehaviour:
   stats:
     maxHealth: 100
     damage: 20
-  deathParticle: {fileID: 2560810337090733310, guid: 1b53c24fe86f7d54cbb2a2982ded9ec9,
+  deathParticle: {fileID: 5240955558455377345, guid: 778a9e93cd0f9aa43a5d460663789e47,
     type: 3}
-  halfHealth: {fileID: 2338884085508895391, guid: f507f44ad60ced9418ead3c7e95fc85f,
+  halfHealth: {fileID: 2033151713775246783, guid: 5b8b87dbd0c6e004dac3004ad503ff2b,
     type: 3}
   lowHealth: {fileID: 7676007077314269087, guid: ab0e3bca325f847498e587e3c7024677,
     type: 3}

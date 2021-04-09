@@ -8,6 +8,14 @@ public class GameMaster : MonoBehaviour
 
     
     public static GameMaster gm;
+
+
+    private static int remaininglives = 3;
+
+    public static int _remaininglives
+    {
+        get { return remaininglives; }
+    }
     void Awake()
     {
         if (gm == null)
@@ -23,7 +31,13 @@ public class GameMaster : MonoBehaviour
         {
             Debug.LogError("Not found camerashake");
         }
+        remaininglives = MaxLives;
 
+        audio_manager = Audio_Manager.instance;
+        if (audio_manager == null)
+        {
+            Debug.LogError("Not found audio manager");
+        }
     }
 
 
@@ -34,18 +48,44 @@ public class GameMaster : MonoBehaviour
 
     public shakecamera shakeCamera;
     public float spawnDelay = 2;
+
+    [SerializeField]
+    private GameObject gameoverui;
+    [SerializeField]
+    private int MaxLives;
+
+    private Audio_Manager audio_manager;
+
+    public string respawn_sound;
+
     public IEnumerator respawnPlayer()
     {
-        GetComponent<AudioSource>().Play();
+        audio_manager.playsound(respawn_sound);
         yield return new WaitForSeconds(spawnDelay);
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         Transform clone = Instantiate(spawnPrefab, new Vector3(spawnPoint.position.x, spawnPoint.position.y-1, spawnPoint.position.x), Quaternion.Euler(-90, 90, 0)) as Transform;
         Destroy(clone.gameObject, 3f);
     }
+
+    public void endgame()
+    {
+        gameoverui.SetActive(true);
+        Debug.Log("END GAME!!");
+    }
+
     public static void killPlayer(Player player)
     {
         Destroy(player.gameObject);
-        gm.StartCoroutine (gm.respawnPlayer());
+        remaininglives -= 1;
+        if (remaininglives <= 0)
+        {
+           gm.endgame();
+        }
+        else
+        {
+            gm.StartCoroutine(gm.respawnPlayer());
+        }
+        
     }
 
     public static void killEnemy(Enemy enemy)

@@ -131,7 +131,8 @@ public class wavespawner : MonoBehaviour
     void spawnEnemy(Transform enemy)
     {
         Transform sp = spawnpoint[Random.Range(0,spawnpoint.Length)];
-        Instantiate(enemy, sp.position, sp.rotation);
+        Vector3 x = new Vector3(sp.position.x, sp.position.y, 14);
+        Instantiate(enemy, x  , sp.rotation);
         Debug.Log("spawning Enenmy");
     }
 }
