@@ -2267,7 +2267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: respawn
+  - name: x
     clip: {fileID: 8300000, guid: 6d21f55fea6ebfe469e72d575bbe3891, type: 3}
     volume: 0.7
     pitch: 1
@@ -2407,7 +2407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136658944}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d62d12989a3fe54ea0accba9f2bb7f3, type: 3}
   m_Name: 
@@ -3946,7 +3946,7 @@ PrefabInstance:
     - target: {fileID: 3581011095216516772, guid: 751fe915235a41d4f8facfb658db5e0b,
         type: 3}
       propertyPath: respawn_sound
-      value: respawn
+      value: x
       objectReference: {fileID: 0}
     - target: {fileID: 3581011095216516793, guid: 751fe915235a41d4f8facfb658db5e0b,
         type: 3}

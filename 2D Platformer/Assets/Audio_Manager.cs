@@ -32,7 +32,6 @@ public class Sound{
         source.pitch = pitch * (1 + Random.Range(-Randomvpitch / 2f, Randomvpitch / 2f));
         source.Play();
     }
-
 }
 
 public class Audio_Manager : MonoBehaviour
@@ -52,17 +51,18 @@ public class Audio_Manager : MonoBehaviour
         {
             instance = this;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        for (int i=0;i<sounds.Length;i++)
+        for (int i = 0; i < sounds.Length; i++)
         {
             GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
             _go.transform.SetParent(this.transform);
             sounds[i].setsource(_go.AddComponent<AudioSource>());
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     public void playsound(string _name)

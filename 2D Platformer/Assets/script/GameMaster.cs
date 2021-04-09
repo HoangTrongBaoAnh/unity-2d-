@@ -25,22 +25,6 @@ public class GameMaster : MonoBehaviour
         
     }
 
-    void start()
-    {
-        if (shakeCamera == null)
-        {
-            Debug.LogError("Not found camerashake");
-        }
-        remaininglives = MaxLives;
-
-        audio_manager = Audio_Manager.instance;
-        if (audio_manager == null)
-        {
-            Debug.LogError("Not found audio manager");
-        }
-    }
-
-
     public Transform playerPrefab;
 
     public Transform spawnPoint;
@@ -58,9 +42,21 @@ public class GameMaster : MonoBehaviour
 
     public string respawn_sound;
 
+    void start()
+    {
+        if (shakeCamera == null)
+        {
+            Debug.LogError("Not found camerashake");
+        }
+        remaininglives = MaxLives;
+
+        
+    }
+
+
     public IEnumerator respawnPlayer()
     {
-        audio_manager.playsound(respawn_sound);
+        audio_manager.playsound("x");
         yield return new WaitForSeconds(spawnDelay);
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         Transform clone = Instantiate(spawnPrefab, new Vector3(spawnPoint.position.x, spawnPoint.position.y-1, spawnPoint.position.x), Quaternion.Euler(-90, 90, 0)) as Transform;
@@ -103,6 +99,10 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        audio_manager = Audio_Manager.instance;
+        if (audio_manager == null)
+        {
+            Debug.LogError("Not found audio manager");
+        }
     }
 }
